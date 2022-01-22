@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>ハタウラからぷらっとバス!!</title>
+	<link rel="icon" type="image/png" href="android-touch-icon.png" sizes="192x192">
 	<style>
 		body{padding: 0 20px;}
 		img{max-width: 100%;width: 100%;}
@@ -65,37 +66,37 @@
 			if(dayofweek == "月〜土曜日"){
 				switch (destination) {
 				  case "市役所":
-						guide_img.setAttribute('src', 'img/siyakusyo-a.png');
+						guide_img.setAttribute('src', '/siyakusyo-a.png');
 				    break;
 				  case "和田病院":
-				  	guide_img.setAttribute('src', 'img/wada-a.png');
+				  	guide_img.setAttribute('src', '/wada-a.png');
 				    break;
 				  case "滝井病院":
-				  	guide_img.setAttribute('src', 'img/takii-a.png');
+				  	guide_img.setAttribute('src', '/takii-a.png');
 				    break;
 			   case "大王谷コミュニティーセンター":
-			   		guide_img.setAttribute('src', 'img/daioudani-a.png');
+			   		guide_img.setAttribute('src', '/daioudani-a.png');
 				    break;
 			   case "日向市駅":
-			   		guide_img.setAttribute('src', 'img/eki-a.png');
+			   		guide_img.setAttribute('src', '/eki-a.png');
 				    break;
 				}
 			} else if(dayofweek == "日曜か祝日"){
 					switch (destination) {
 					  case "市役所":
-					  	guide_img.setAttribute('src', 'img/siyakusyo-b.png');
+					  	guide_img.setAttribute('src', '/siyakusyo-b.png');
 					    break;
 					  case "和田病院":
-					  	guide_img.setAttribute('src', 'img/wada-b.png');
+					  	guide_img.setAttribute('src', '/wada-b.png');
 					    break;
 					  case "滝井病院":
-					  	guide_img.setAttribute('src', 'img/takii-b.png');
+					  	guide_img.setAttribute('src', '/takii-b.png');
 					    break;
 				   case "大王谷コミュニティーセンター":
-				   		guide_img.setAttribute('src', 'img/daioudani-b.png');
+				   		guide_img.setAttribute('src', '/daioudani-b.png');
 					    break;
 				   case "日向市駅":
-				   		guide_img.setAttribute('src', 'img/eki-b.png');
+				   		guide_img.setAttribute('src', '/eki-b.png');
 					    break;
 					}
 			}
