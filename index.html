@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ハタウラからぷらっとバス!!</title>
+	<style>
+		body{padding: 0 20px;}
+		img{max-width: 100%;width: 100%;}
+		span{display: inline-block;}
+		/*.destination{display: flex;}*/
+		.dayofweek label,
+		.destination label{display: block;background-color: antiquewhite;padding: 0.5em;}
+		.btn-wrapper{text-align: center;}
+		.btn-wrapper >input{width: 74%;margin-top: 1.3em;padding: 1em;}
+	</style>
+</head>
+<body>
+	<section class="dayofweek-wrapper">
+		<h1>バスを使う曜日を<span>1つ選んでね☆</span></h1>
+		<div class="dayofweek">
+			<label><input type="radio" name="dayofweek" value="月〜土曜日" checked required>月〜土曜日</label>
+			<label><input type="radio" name="dayofweek" value="日曜か祝日">日曜か祝日</label>
+		</div>
+	</section>
+	<section class="dayofweek-wrapper">
+		<h1>目的地を1つ選んでね❤</h1>
+		<div class="destination">
+			<label><input type="radio" name="destination" value="日向市駅" checked required>日向市駅</label>
+			<label><input type="radio" name="destination" value="市役所">市役所</label>
+			<label><input type="radio" name="destination" value="和田病院">和田病院</label>
+			<label><input type="radio" name="destination" value="滝井病院">滝井病院</label>
+			<label><input type="radio" name="destination" value="大王谷コミュニティーセンター">大王谷コミュニティーセンター</label>
+		</div>
+	</section>
+	<p class="btn-wrapper">
+		<input type="button" value="↓↓結果を表示する↓↓" onclick="showComment()">
+	</p>
+	<div class="img-box">
+		<img id="guide_img" src="" alt="">
+	</div>
+	<script type="text/javascript">
+		let index;
+		let guide_img   = document.getElementById('guide_img');
+  	let img_back = document.getElementById('img-back');
+		
+		//関数 showComment の定義
+		function showComment(){
+			let dayofweek;/*曜日*/
+			let destination;/*行き先*/
+		  let input_dayofweek   = document.querySelectorAll("input[name=dayofweek]:checked");/*チェックが入った要素を取得して変数へ格納*/
+			let input_destination = document.querySelectorAll("input[name=destination]:checked");/*チェックされた要素を取得して変数へ格納*/
+			
+			// 要素の値を変数に格納
+			for(let checked_data of input_dayofweek) {
+				dayofweek 　= checked_data.value;
+			}
+			// 要素の値を変数に格納
+			for(let checked_data of input_destination) {
+				destination = checked_data.value;
+			}
+			
+			// 選択されたものを元に結果内容を分岐
+			if(dayofweek == "月〜土曜日"){
+				switch (destination) {
+				  case "市役所":
+						guide_img.setAttribute('src', 'img/siyakusyo-a.png');
+				    break;
+				  case "和田病院":
+				  	guide_img.setAttribute('src', 'img/wada-a.png');
+				    break;
+				  case "滝井病院":
+				  	guide_img.setAttribute('src', 'img/takii-a.png');
+				    break;
+			   case "大王谷コミュニティーセンター":
+			   		guide_img.setAttribute('src', 'img/daioudani-a.png');
+				    break;
+			   case "日向市駅":
+			   		guide_img.setAttribute('src', 'img/eki-a.png');
+				    break;
+				}
+			} else if(dayofweek == "日曜か祝日"){
+					switch (destination) {
+					  case "市役所":
+					  	guide_img.setAttribute('src', 'img/siyakusyo-b.png');
+					    break;
+					  case "和田病院":
+					  	guide_img.setAttribute('src', 'img/wada-b.png');
+					    break;
+					  case "滝井病院":
+					  	guide_img.setAttribute('src', 'img/takii-b.png');
+					    break;
+				   case "大王谷コミュニティーセンター":
+				   		guide_img.setAttribute('src', 'img/daioudani-b.png');
+					    break;
+				   case "日向市駅":
+				   		guide_img.setAttribute('src', 'img/eki-b.png');
+					    break;
+					}
+			}
+		}
+	</script>
+</body>
+</html>
