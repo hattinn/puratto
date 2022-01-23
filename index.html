@@ -7,46 +7,55 @@
 	<title>ハタウラからぷらっとバス!!</title>
 	<link rel="icon" type="image/png" href="android-touch-icon.png" sizes="192x192">
 	<style>
-		body{padding: 0 20px;}
-		img{max-width: 100%;width: 100%;}
+		body{font-size: 1.7rem;}
+		h1{font-size: 2rem;color: #2e2e2e;margin-bottom: .3em;}
+		img{max-width: 100%;width: 100%; transform: scale(1.2);}
 		span{display: inline-block;}
 		/*.destination{display: flex;}*/
+		.choice-area{padding: 0 20px;}
 		.dayofweek label,
 		.destination label{display: block;background-color: antiquewhite;padding: 0.5em;}
 		.btn-wrapper{text-align: center;}
-		.btn-wrapper >input{width: 74%;margin-top: 1.3em;padding: 1em;}
+		.btn-wrapper >input{width: 100%;margin-top: .3em;margin-bottom: 2em;padding: .8em;border-radius:10px;font-size: 2rem;font-weight: 600;}
 	</style>
 </head>
 <body>
-	<section class="dayofweek-wrapper">
-		<h1>バスを使う曜日を<span>1つ選んでね☆</span></h1>
-		<div class="dayofweek">
-			<label><input type="radio" name="dayofweek" value="月〜土曜日" checked required>月〜土曜日</label>
-			<label><input type="radio" name="dayofweek" value="日曜か祝日">日曜か祝日</label>
-		</div>
-	</section>
-	<section class="dayofweek-wrapper">
-		<h1>目的地を1つ選んでね❤</h1>
-		<div class="destination">
-			<label><input type="radio" name="destination" value="日向市駅" checked required>日向市駅</label>
-			<label><input type="radio" name="destination" value="市役所">市役所</label>
-			<label><input type="radio" name="destination" value="和田病院">和田病院</label>
-			<label><input type="radio" name="destination" value="滝井病院">滝井病院</label>
-			<label><input type="radio" name="destination" value="大王谷コミュニティーセンター">大王谷コミュニティーセンター</label>
-		</div>
-	</section>
-	<p class="btn-wrapper">
-		<input type="button" value="↓↓結果を表示する↓↓" onclick="showComment()">
-	</p>
-	<div class="img-box">
-		<img id="guide_img" src="" alt="">
+	<div class="choice-area">
+		<section class="dayofweek-wrapper">
+			<h1>バスを使う曜日を1つ選んでね☆</h1>
+			<div class="dayofweek">
+				<label><input type="radio" name="dayofweek" value="月〜土曜日" checked required>月〜土曜日</label>
+				<label><input type="radio" name="dayofweek" value="日曜か祝日">日曜か祝日</label>
+			</div>
+		</section>
+		<section class="dayofweek-wrapper">
+			<h1>目的地を1つ選んでね❤</h1>
+			<div class="destination">
+				<label><input type="radio" name="destination" value="イオン" checked required>イオン→はたうら</label>
+				<label><input type="radio" name="destination" value="日向市駅" checked required>はたうら↔日向市駅</label>
+				<label><input type="radio" name="destination" value="市役所">はたうら↔市役所</label>
+				<label><input type="radio" name="destination" value="和田病院">はたうら↔和田病院</label>
+				<label><input type="radio" name="destination" value="滝井病院">はたうら↔滝井病院</label>
+				<label><input type="radio" name="destination" value="大王谷コミュニティーセンター">はたうら↔大王谷コミュニティーセンター</label>
+			</div>
+		</section>
+		<p class="btn-wrapper">
+			<input type="button" value="時刻表を出す" onclick="showComment()">
+		</p>
 	</div>
+	<div class="img-box" id="img-box">
+		<img id="guide_img" src="" alt="" onload="onScroll()">
+	</div>
+	
 	<script type="text/javascript">
 		let index;
+		let img_box   = document.getElementById('img-box');
 		let guide_img   = document.getElementById('guide_img');
-  	let img_back = document.getElementById('img-back');
 		
-		//関数 showComment の定義
+		//結果ボタンタップで表示された位置に自動スクロール
+		function onScroll() {img_box.scrollIntoView();}
+		
+		//結果ボタンタップで表示する処理
 		function showComment(){
 			let dayofweek;/*曜日*/
 			let destination;/*行き先*/
@@ -65,6 +74,9 @@
 			// 選択されたものを元に結果内容を分岐
 			if(dayofweek == "月〜土曜日"){
 				switch (destination) {
+					case "イオン":
+						guide_img.setAttribute('src', 'ion-a.png');
+				    break;
 				  case "市役所":
 						guide_img.setAttribute('src', 'siyakusyo-a.png');
 				    break;
@@ -83,6 +95,9 @@
 				}
 			} else if(dayofweek == "日曜か祝日"){
 					switch (destination) {
+						case "イオン":
+							guide_img.setAttribute('src', 'ion-b.png');
+				    	break;
 					  case "市役所":
 					  	guide_img.setAttribute('src', 'siyakusyo-b.png');
 					    break;
